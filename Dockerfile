@@ -108,21 +108,21 @@ RUN curl -O https://bootstrap.pypa.io/pip/3.5/get-pip.py && \
 # https://bugs.launchpad.net/ubuntu/+source/x11vnc/+bug/1686084
 # Also, fix issue with Shift-Tab not working
 # https://askubuntu.com/questions/839842/vnc-pressing-shift-tab-tab-only
-#RUN apt-get update && \
-#    apt-get install -y libxtst-dev libssl-dev libjpeg-dev && \
-#    \
-#    mkdir -p /tmp/x11vnc-0.9.14 && \
-#    curl -s -L http://x11vnc.sourceforge.net/dev/x11vnc-0.9.14-dev.tar.gz | \
-#        tar zxf - -C /tmp/x11vnc-0.9.14 --strip-components 1 && \
-#    cd /tmp/x11vnc-0.9.14 && \
-#    ./configure --prefix=/usr/local CFLAGS='-O2 -fno-stack-protector -Wall' && \
-#    make && \
-#    make install && \
-#    perl -e 's/,\s*ISO_Left_Tab//g' -p -i /usr/share/X11/xkb/symbols/pc && \
-#    apt-get -y remove libxtst-dev libssl-dev libjpeg-dev && \
-#    apt-get -y autoremove && \
-#    ldconfig && \
-#    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update && \
+    apt-get install -y libxtst-dev libssl-dev libjpeg-dev && \
+    \
+    mkdir -p /tmp/x11vnc-0.9.14 && \
+    curl -s -L http://x11vnc.sourceforge.net/dev/x11vnc-0.9.14-dev.tar.gz | \
+        tar zxf - -C /tmp/x11vnc-0.9.14 --strip-components 1 && \
+    cd /tmp/x11vnc-0.9.14 && \
+    ./configure --prefix=/usr/local CFLAGS='-O2 -fno-stack-protector -Wall' && \
+    make && \
+    make install && \
+    perl -e 's/,\s*ISO_Left_Tab//g' -p -i /usr/share/X11/xkb/symbols/pc && \
+    apt-get -y remove libxtst-dev libssl-dev libjpeg-dev && \
+    apt-get -y autoremove && \
+    ldconfig && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ########################################################
 # Customization for user and location
