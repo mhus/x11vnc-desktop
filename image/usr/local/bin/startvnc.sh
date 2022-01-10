@@ -103,9 +103,11 @@ x11vnc -display :$DISP -rfbport $VNC_PORT -xkb -repeat -skip_dups -forever -shar
 X11VNC_PID=$!
 
 # startup novnc
-/usr/local/noVNC/utils/launch.sh --web /usr/local/noVNC \
-    --vnc localhost:$VNC_PORT --listen $WEB_PORT > $HOME/.log/novnc.log 2>&1 &
-NOVNC_PID=$1
+/usr/local/bin/novnc_server --web /usr/share/novnc/
+
+#/usr/local/noVNC/utils/launch.sh --web /usr/local/noVNC \
+#    --vnc localhost:$VNC_PORT --listen $WEB_PORT > $HOME/.log/novnc.log 2>&1 &
+#NOVNC_PID=$1
 
 # Error checking
 ps $XORG_PID > /dev/null || { cat $HOME/.log/Xorg_err.log && exit -1; }

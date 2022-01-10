@@ -76,7 +76,9 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         x11vnc \
         \
         firefox \
-        xpdf && \
+        xpdf \
+        novnc \
+        websockify && \
     chmod 755 /usr/local/share/zsh/site-functions && \
     apt-get -y autoremove && \
     ssh-keygen -A && \
@@ -92,16 +94,16 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install websokify and noVNC
-RUN curl -O https://bootstrap.pypa.io/pip/3.5/get-pip.py && \
-    python3 get-pip.py && \
-    /usr/bin/python3 -m pip install --upgrade pip && \
-    pip3 install --no-cache-dir \
-        setuptools && \
-    pip3 install -U https://github.com/novnc/websockify/archive/refs/tags/v0.10.0.tar.gz && \
-    mkdir /usr/local/noVNC && \
-    curl -s -L https://github.com/x11vnc/noVNC/archive/master.tar.gz | \
-         tar zxf - -C /usr/local/noVNC --strip-components 1 && \
-    rm -rf /tmp/* /var/tmp/*
+#RUN curl -O https://bootstrap.pypa.io/pip/3.5/get-pip.py && \
+#    python3 get-pip.py && \
+#    /usr/bin/python3 -m pip install --upgrade pip && \
+#    pip3 install --no-cache-dir \
+#        setuptools && \
+#    pip3 install -U https://github.com/novnc/websockify/archive/refs/tags/v0.10.0.tar.gz && \
+#    mkdir /usr/local/noVNC && \
+#    curl -s -L https://github.com/x11vnc/noVNC/archive/master.tar.gz | \
+#         tar zxf - -C /usr/local/noVNC --strip-components 1 && \
+#    rm -rf /tmp/* /var/tmp/*
 
 # Install x11vnc from source
 # Install X-related to compile x11vnc from source code.
